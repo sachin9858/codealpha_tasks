@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Player</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-music"></i>
+            </div>
+
+            <span>Melody</span>
+        </div>
+
+        <nav>
+
+            <p class="nav-title">MENU</p>
+
+            <button class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+
+            <button class="nav-item">
+                <i class="fa-solid fa-compass"></i>
+                <span>Discover</span>
+            </button>
+
+            <button class="nav-item">
+                <i class="fa-solid fa-heart"></i>
+                <span>Liked Songs</span>
+            </button>
+
+            <p class="nav-title playlist-title">YOUR PLAYLIST</p>
+
+            <button class="nav-item">
+                <i class="fa-solid fa-list"></i>
+                <span>My Playlist</span>
+            </button>
+
+            <button class="nav-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Recently Played</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <label class="upload-button" for="musicUpload">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                Add Local Music
+            </label>
+
+            <input
+                type="file"
+                id="musicUpload"
+                accept="audio/*"
+                multiple
+                hidden
+            >
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <header class="topbar">
+
+            <div class="mobile-logo">
+                <i class="fa-solid fa-music"></i>
+                Melody
+            </div>
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search songs, artists..."
+                >
+
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    Y
+                </div>
+
+                <div class="profile-text">
+                    <strong>Music Lover</strong>
+                    <span>Premium</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    <i class="fa-solid fa-headphones"></i>
+                    YOUR MUSIC
+                </span>
+
+                <h1>
+                    Discover your<br>
+                    <span>next favorite song.</span>
+                </h1>
+
+                <p>
+                    Listen to your favorite music and enjoy
+                    every moment.
+                </p>
+
+                <button class="hero-button" id="heroPlay">
+                    <i class="fa-solid fa-play"></i>
+                    Start Listening
+                </button>
+
+            </div>
+
+            <div class="hero-decoration">
+
+                <div class="vinyl">
+                    <div class="vinyl-center">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Popular Songs</h2>
+                    <p>Choose a song and start listening</p>
+                </div>
+
+                <button id="showAllBtn">
+                    See All
+                </button>
+
+            </div>
+
+
+            <!-- SONG CARDS -->
+
+            <div class="song-grid" id="songGrid">
+                <!-- JavaScript creates songs -->
+            </div>
+
+
+            <!-- ================= PLAYLIST ================= -->
+
+            <div class="playlist-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Your Playlist</h2>
+                        <p id="playlistCount">0 songs</p>
+                    </div>
+
+                    <button id="clearPlaylist">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div class="playlist" id="playlist">
+                    <!-- JavaScript creates playlist -->
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PLAYER ================= -->
+
+    <footer class="player">
+
+        <!-- Current song -->
+
+        <div class="now-playing">
+
+            <img
+                id="playerCover"
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&q=80"
+                alt="Album"
+            >
+
+            <div class="now-info">
+
+                <strong id="playerTitle">
+                    Select a song
+                </strong>
+
+                <span id="playerArtist">
+                    Artist
+                </span>
+
+            </div>
+
+            <button
+                class="like-button"
+                id="likeButton"
+                title="Like"
+            >
+                <i class="fa-regular fa-heart"></i>
+            </button>
+
+        </div>
+
+
+        <!-- Controls -->
+
+        <div class="player-center">
+
+            <div class="controls">
+
+                <button id="shuffleBtn" title="Shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+
+                <button id="previousBtn" title="Previous">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+
+                <button
+                    class="play-button"
+                    id="playButton"
+                    title="Play"
+                >
+                    <i class="fa-solid fa-play"></i>
+                </button>
+
+                <button id="nextBtn" title="Next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+
+                <button id="repeatBtn" title="Repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Volume -->
+
+        <div class="volume-control">
+
+            <button id="muteButton">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+
+            <input
+                type="range"
+                id="volumeBar"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.8"
+            >
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- REAL HTML AUDIO ELEMENT -->
+
+<audio id="audio"></audio>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
